@@ -14,8 +14,30 @@
 function employee(name, salary) {
     return {
         name: name,
-        salary: salary
+        salary: salary,
+        sayMyName : sayMyName,
+        friendlist : '',
+        sayHello : sayHello,
+        increaseSalary : increaseSalary,
+        addFriend : addFriend
     }
+
+    function sayMyName() {
+        return name;       
+    }
+
+    function sayHello () {
+        return "hello" + name;
+    }
+
+    function increaseSalary (n) {
+        salary += n;
+        return "your salary is " + salary + "$";
+    }
+
+    function addFriend (employee) {
+        return "you just became friend with " + employee.name;
+    
 }
 
 var employeeA = employee("jack", 100);
@@ -27,7 +49,6 @@ var employeeC = employee("Sara", 150);
 
 // employeeA.sayMyName(); // "jack"
 // employeeB.sayMyName(); // "Mark"
-
 
 //now modify that closure and add a function that says hello to the employee name;
 
@@ -53,7 +74,39 @@ var employeeC = employee("Sara", 150);
 //=============================================================================
 //lets create a pet class using OOP concept,
 // a - we need to create the pets (lets create only one for now), the invocation should take the name of the pet. 
+function Pet(name) {
+    pet = {};
+    pet.name = name;
+    pet.age;
+    pet.owner;
+    pet.gender;
+    pet.species;
+    availability = flase;
+    pet.addInfo = addInfo;
+    pet.older = older
+    checkAvailability = checkAvailability;
+    return pets;
+}
 
+var addInfo = function(age, owner, gender, species){
+    this.age = age;
+    this.owner = owner;
+    this.gender = gender;
+    this.species = species;
+    return this;
+} 
+
+var older = function (n){
+    this.age += n;
+    return this;
+}
+
+var checkAvailability = function (){
+    if(this.availability === true){
+        return true
+    }
+    return false
+}
 // var pet1 = Pet("doggy");
 
 // b - we need function to add the other info for the pet, called addInfo function. Make sure your functions unneeded memory space
@@ -102,7 +155,14 @@ function reduce(array, f, acc) {
 // Use the updated version of reduce to write a function max that returns the maximum number in an array of numbers. 
 
 // Write your code here .....
-
+function max (arr) {
+    return reduce(arr, function(maximum,element){
+        if(element > maximum){
+            maximum = element;
+        }
+        return maximum
+    })
+}
 
 
 
