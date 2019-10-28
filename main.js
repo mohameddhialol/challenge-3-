@@ -17,9 +17,11 @@ function employee(name, salary) {
         salary: salary,
         sayMyName : sayMyName,
         friendlist : '',
+        friendscnt : 0,
         sayHello : sayHello,
         increaseSalary : increaseSalary,
-        addFriend : addFriend
+        addFriend : addFriend,
+        friendsNumber : friendsNumber
     }
 
     function sayMyName() {
@@ -36,8 +38,21 @@ function employee(name, salary) {
     }
 
     function addFriend (employee) {
-        return "you just became friend with " + employee.name;
-    
+    	if(this.friendlist.indexOf(employee.name) !== -1){
+    		return "you're already friends with " + employee.name
+    	}
+    	if (this.friendlist === ''){
+        	this.friendlist = "you just became friend with " + employee.name;
+        	this.friendscnt ++ 
+        	return this.friendlist;
+    	}
+    	this.friendscnt ++
+    	return this.friendlist += " and " + employee.name;
+    }
+
+    function friendsNumber (){
+    	return this.friendscnt;
+    }
 }
 
 var employeeA = employee("jack", 100);
@@ -81,11 +96,12 @@ function Pet(name) {
     pet.owner;
     pet.gender;
     pet.species;
-    availability = flase;
+    pet.availability = false;
     pet.addInfo = addInfo;
-    pet.older = older
-    checkAvailability = checkAvailability;
-    return pets;
+    pet.older = older;
+    pet.checkAvailability = checkAvailability;
+    pet.changeState = changeState;
+    return pet;
 }
 
 var addInfo = function(age, owner, gender, species){
@@ -107,7 +123,15 @@ var checkAvailability = function (){
     }
     return false
 }
+var changeState = function (){
+	if(this.availability === false ){
+		this.availability = true;
+	} else {
+		this.availability = false;
+	}
+}
 // var pet1 = Pet("doggy");
+// pet1.addInfo(69,"me yey","good boi","iconic meme")
 
 // b - we need function to add the other info for the pet, called addInfo function. Make sure your functions unneeded memory space
 
